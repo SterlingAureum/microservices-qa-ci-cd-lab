@@ -284,6 +284,37 @@ This will:
 
 You can also point your browser or curl to the Traefik and Prometheus endpoints while the stack is running (if you expose them), but the lab is primarily designed to be driven by the QA runner and orchestrator.
 
+### 5.5 Example run
+
+```bash
+$ bash scripts/qa_orchestrator.sh
+[INFO] QA orchestrator started
+[INFO] Modules: api-v1,ui-v1
+[INFO] === QA for module: api-v1 ===
+[INFO] Test baseline_health: pass
+[INFO] Test slow_endpoint: pass
+[INFO] Test error_endpoint: pass
+[INFO] qa-runner-api-v1 exit code: 0
+[INFO] === QA for module: ui-v1 ===
+...
+```
+```bash
+$ cat state/last_good.json
+{
+  "modules": {
+    "api-v1": {
+      "image_tag": "microservices-qa-ci-cd-lab-app-api-v1:latest",
+      "updated_at": "2025-12-01T08:30:12Z"
+    },
+    "ui-v1": {
+      "image_tag": "microservices-qa-ci-cd-lab-app-ui-v1:latest",
+      "updated_at": "2025-12-01T08:31:05Z"
+    }
+  }
+}
+
+```
+
 ---
 
 ## 6. Limitations and Roadmap
