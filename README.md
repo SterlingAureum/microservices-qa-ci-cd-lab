@@ -61,28 +61,28 @@ All containers are attached to a shared Docker network `qa_net` fronted by Traef
 +---------------------------------------------------------------+
 | Docker Host                                                   |
 |                                                               |
-|  +---------------------+      +----------------------------+ |
-|  |  Infra Stack        |      |  Module Stack (api-v1)     | |
-|  |  (infra/*)          |      |  (modules/api-v1/*)        | |
-|  |                     |      |                            | |
-|  |  +--------------+   |      |  +----------------------+  | |
-|  |  |  Traefik     |<---------+->|  app-api-v1          |  | |
-|  |  |  :443        |   |      |  |  FastAPI service     |  | |
-|  |  +--------------+   |      |  +----------------------+  | |
-|  |          ^          |      |               ^            | |
-|  |  +--------------+   |      |  +----------------------+  | |
-|  |  | Prometheus   |<---------+->| qa-runner-api-v1     |  | |
-|  |  | :9090        |   |      |  | (sidecar QA runner)  |  | |
-|  |  +--------------+   |      |  +----------------------+  | |
-|  |                     |      |                            | |
-|  +---------------------+      +----------------------------+ |
+|  +---------------------+      +----------------------------+  |
+|  |  Infra Stack        |      |  Module Stack (api-v1)     |  |
+|  |  (infra/*)          |      |  (modules/api-v1/*)        |  |
+|  |                     |      |                            |  |
+|  |  +--------------+   |      |  +----------------------+  |  |
+|  |  |  Traefik     |<---------+->|  app-api-v1          |  |  |
+|  |  |  :443        |   |      |  |  FastAPI service     |  |  |
+|  |  +--------------+   |      |  +----------------------+  |  |
+|  |          ^          |      |               ^            |  |
+|  |  +--------------+   |      |  +----------------------+  |  |
+|  |  | Prometheus   |<---------+->| qa-runner-api-v1     |  |  |
+|  |  | :9090        |   |      |  | (sidecar QA runner)  |  |  |
+|  |  +--------------+   |      |  +----------------------+  |  |
+|  |                     |      |                            |  |
+|  +---------------------+      +----------------------------+  |
 |                                                               |
 |  Shared network: qa_net                                       |
 |                                                               |
 |  Volumes:                                                     |
 |    ./modules/<module>/configs  -> /configs                    |
 |    ./state/last_good.json      -> /state/last_good.json       |
-|    ./reports                  -> /reports                    |
+|    ./reports                  -> /reports                     |
 +---------------------------------------------------------------+
 ```
 
@@ -326,17 +326,3 @@ This repository can be used as:
 
 It is intentionally client-agnostic and contains no proprietary logic.
 
----
-
-## 8. License
-
-This project is intended to be open-source friendly. A typical choice is the MIT License:
-
-```text
-MIT License
-
-Copyright (c) 2025 SterlingAureum
-...
-```
-
-Please add a `LICENSE` file at the repository root with your preferred license before publishing the project publicly.
