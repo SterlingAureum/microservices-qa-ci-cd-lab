@@ -1,25 +1,28 @@
 {
+  "module": "api-v1",
+  "health_ok": true,
+  "health_error": null,
   "results": [
     {
       "name": "baseline_health",
       "path": "/health",
       "status": "pass",
       "http_status": 200,
-      "latency_ms": 21
+      "latency_ms": 16
     },
     {
       "name": "slow_endpoint",
       "path": "/slow",
       "status": "pass",
       "http_status": 200,
-      "latency_ms": 1513
+      "latency_ms": 1518
     },
     {
       "name": "error_endpoint",
       "path": "/error",
       "status": "pass",
       "http_status": 500,
-      "latency_ms": 14
+      "latency_ms": 10
     }
   ]
 }

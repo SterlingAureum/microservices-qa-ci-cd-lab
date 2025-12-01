@@ -2,7 +2,7 @@ services:
   app-api-v1:
     build:
       context: ./services/api/v1
-    image: microservices-qa-ci-cd-lab-app-api-v1:latest
+    image: microservices-qa-ci-cd-lab-app-api-v1:${QA_TAG:-dev}
     container_name: qa-app-api-v1
     expose:
       - "8000"
@@ -26,12 +26,7 @@ services:
     depends_on:
       - app-api-v1
     environment:
-      MODULE_NAME: "api-v1"
-      TARGET_BASE_URL: "http://app-api-v1:8000"
-      SERVICEINTENT_PATH: "/configs/serviceintent.yaml"
-      TEST_MATRIX_PATH: "/configs/test_matrix.yaml"
-      STATE_FILE: "/state/last_good.json"
-      REPORTS_DIR: "/reports"
+      - QA_TAG=${QA_TAG}
     volumes:
       - ./modules/api-v1/configs:/configs:ro
       - ./state:/state

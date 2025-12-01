@@ -303,12 +303,12 @@ $ cat state/last_good.json
 {
   "modules": {
     "api-v1": {
-      "image_tag": "microservices-qa-ci-cd-lab-app-api-v1:latest",
-      "updated_at": "2025-12-01T08:30:12Z"
+      "image_tag": "microservices-qa-ci-cd-lab-app-api-v1:20251201-151020",
+      "updated_at": "2025-12-01T15:10:30Z"
     },
     "ui-v1": {
-      "image_tag": "microservices-qa-ci-cd-lab-app-ui-v1:latest",
-      "updated_at": "2025-12-01T08:31:05Z"
+      "image_tag": "microservices-qa-ci-cd-lab-app-ui-v1:20251201-151034",
+      "updated_at": "2025-12-01T15:10:42Z"
     }
   }
 }

@@ -1,25 +1,28 @@
 {
+  "module": "ui-v1",
+  "health_ok": true,
+  "health_error": null,
   "results": [
     {
       "name": "baseline_health",
       "path": "/health",
       "status": "pass",
       "http_status": 200,
-      "latency_ms": 27
+      "latency_ms": 13
     },
     {
       "name": "ui_root_page",
       "path": "/",
       "status": "pass",
       "http_status": 200,
-      "latency_ms": 11
+      "latency_ms": 8
     },
     {
       "name": "ui_error_endpoint",
       "path": "/error",
       "status": "pass",
       "http_status": 500,
-      "latency_ms": 10
+      "latency_ms": 9
     }
   ]
 }

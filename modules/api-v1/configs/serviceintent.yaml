@@ -5,11 +5,13 @@ target:
   base_url: "http://app-api-v1:8000"
   health_endpoint: "/health"
   metrics_endpoint: "/metrics"
+  health_timeout_seconds: 60
+  health_check_interval_seconds: 2
 
 sla:
   max_latency_ms: 500
   max_error_rate: 0.01
 
 deployment:
-  candidate_image: "microservices-qa-ci-cd-lab-app-api-v1:latest"
+  base_image: "microservices-qa-ci-cd-lab-app-api-v1"
 

@@ -25,6 +25,11 @@ for module in "${module_array[@]}"; do
     continue
   fi
 
+  # Generate a deterministic tag per run (per module)
+  QA_TAG="$(date +%Y%m%d-%H%M%S)"
+  export QA_TAG
+  echo "[INFO] Using QA_TAG=${QA_TAG} for module ${module_trimmed}"
+
   docker compose \
     --project-directory "$ROOT_DIR" \
     --env-file "$ROOT_DIR/.env" \
