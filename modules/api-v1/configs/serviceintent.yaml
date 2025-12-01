@@ -1,0 +1,15 @@
+service: "api"
+module: "api-v1"
+
+target:
+  base_url: "http://app-api-v1:8000"
+  health_endpoint: "/health"
+  metrics_endpoint: "/metrics"
+
+sla:
+  max_latency_ms: 500
+  max_error_rate: 0.01
+
+deployment:
+  candidate_image: "microservices-qa-ci-cd-lab-app-api-v1:latest"
+

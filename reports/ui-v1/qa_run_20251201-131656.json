@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "name": "baseline_health",
+      "path": "/health",
+      "status": "pass",
+      "http_status": 200,
+      "latency_ms": 27
+    },
+    {
+      "name": "ui_root_page",
+      "path": "/",
+      "status": "pass",
+      "http_status": 200,
+      "latency_ms": 11
+    },
+    {
+      "name": "ui_error_endpoint",
+      "path": "/error",
+      "status": "pass",
+      "http_status": 500,
+      "latency_ms": 10
+    }
+  ]
+}

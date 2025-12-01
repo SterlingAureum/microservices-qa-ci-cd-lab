@@ -1,0 +1,20 @@
+tests:
+  - name: "baseline_health"
+    type: "http"
+    method: "GET"
+    path: "/health"
+    expect_status: 200
+
+  - name: "slow_endpoint"
+    type: "http"
+    method: "GET"
+    path: "/slow"
+    expect_status: 200
+    max_latency_ms: 2000
+
+  - name: "error_endpoint"
+    type: "http"
+    method: "GET"
+    path: "/error"
+    expect_status: 500
+

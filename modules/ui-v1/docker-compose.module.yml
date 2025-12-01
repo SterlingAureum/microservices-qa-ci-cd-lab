@@ -1,0 +1,46 @@
+services:
+  app-ui-v1:
+    build:
+      context: ./services/ui/v1
+    image: microservices-qa-ci-cd-lab-app-ui-v1:latest
+    container_name: qa-app-ui-v1
+    expose:
+      - "8080"
+    networks:
+      - qa_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app_ui_v1.entrypoints=websecure"
+      - "traefik.http.routers.app_ui_v1.rule=Host(`ui-v1.${QA_BASE_DOMAIN}`)"
+      - "traefik.http.routers.app_ui_v1.tls=true"
+      - "traefik.http.services.app_ui_v1.loadbalancer.server.port=8080"
+      - "prometheus.scrape=true"
+      - "prometheus.port=8080"
+      - "prometheus.path=/metrics"
+
+  qa-runner-ui-v1:
+    build:
+      context: ./runner
+    image: microservices-qa-ci-cd-lab-runner:latest
+    container_name: qa-runner-ui-v1
+    depends_on:
+      - app-ui-v1
+    environment:
+      MODULE_NAME: "ui-v1"
+      TARGET_BASE_URL: "http://app-ui-v1:8080"
+      SERVICEINTENT_PATH: "/configs/serviceintent.yaml"
+      TEST_MATRIX_PATH: "/configs/test_matrix.yaml"
+      STATE_FILE: "/state/last_good.json"
+      REPORTS_DIR: "/reports"
+    volumes:
+      - ./modules/ui-v1/configs:/configs:ro
+      - ./state:/state
+      - ./reports:/reports
+    networks:
+      - qa_net
+    command: >
+        --module-name ui-v1
+        --serviceintent /configs/serviceintent.yaml
+        --test-matrix /configs/test_matrix.yaml
+        --state-file /state/last_good.json
+        --reports-dir /reports

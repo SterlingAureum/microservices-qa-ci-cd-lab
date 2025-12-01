@@ -1,0 +1,19 @@
+tests:
+  - name: "baseline_health"
+    type: "http"
+    method: "GET"
+    path: "/health"
+    expect_status: 200
+
+  - name: "ui_root_page"
+    type: "http"
+    method: "GET"
+    path: "/"
+    expect_status: 200
+
+  - name: "ui_error_endpoint"
+    type: "http"
+    method: "GET"
+    path: "/error"
+    expect_status: 500
+
